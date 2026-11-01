@@ -35,12 +35,26 @@
             position: relative;
         }
 
+        /* 상단 네비게이션 버튼 영역 */
         .top-bar {
             display: flex;
             justify-content: flex-end;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 24px;
             position: relative;
+        }
+
+        /* 우측 상단 버튼 모음 (공유 버튼 + 바로 아래 archmonth 로고 버튼) */
+        .right-actions {
+            position: relative;
+            width: 44px;
+            height: 44px;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 54px; /* 공유 버튼 바로 아래 간격 */
+            left: 0;
         }
 
         .icon-btn {
@@ -138,15 +152,26 @@
     <div class="container">
         <!-- 상단 아이콘 바 -->
         <div class="top-bar">
-            <button class="icon-btn" aria-label="Share" onclick="copyLink()">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="18" cy="5" r="3"></circle>
-                    <circle cx="6" cy="12" r="3"></circle>
-                    <circle cx="18" cy="19" r="3"></circle>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                </svg>
-            </button>
+            <!-- 우측 버튼 영역 -->
+            <div class="right-actions">
+                <!-- 우측 상단 공유(Copy) 버튼 -->
+                <button class="icon-btn" aria-label="Share" onclick="copyLink()">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                </button>
+
+                <!-- 공유 버튼 바로 아래: archmonth 메인 페이지로 이동하는 로고 버튼 -->
+                <a href="https://archmonth.github.io/" target="_blank" class="icon-btn home-btn" aria-label="Archmonth Home">
+                    <svg width="20" height="20" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 274 334 L 724 334 L 890 666 L 812 666 L 678 397 L 543 666 L 110 666 Z M 320 398 L 256 526 L 384 526 Z" fill="#000000" fill-rule="evenodd"/>
+                    </svg>
+                </a>
+            </div>
         </div>
 
         <!-- 프로필 영역 -->
@@ -197,9 +222,9 @@
     </div>
 
     <script>
-        // 올바른 실제 GitHub Pages 주소로 수정됨
+        // 클립보드 복사 주소
         function copyLink() {
-            const url = "https://archmonth.github.io/inkevink.github.io/";
+            const url = "https://archmonth.github.io/inkevink/";
             
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(url).then(() => {
@@ -232,3 +257,4 @@
 
 </body>
 </html>
+
